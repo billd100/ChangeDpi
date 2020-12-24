@@ -12,7 +12,9 @@ import (
 )
 
 var (
-	dpi int = 105
+	dpi          int    = 105
+	imagePath    string = "/Users/billdavis/Downloads/label.jpg"
+	newImagePath string = "/Users/billdavis/Downloads/new-label.jpg"
 )
 
 func SetExifData(filepath string) error {
@@ -56,12 +58,12 @@ func SetExifData(filepath string) error {
 	if err != nil {
 		log.Fatal(err)
 	}
-	if err := ioutil.WriteFile("/Users/billdavis/Downloads/new-label.jpg", b.Bytes(), 0644); err != nil {
+	if err := ioutil.WriteFile(newImagePath, b.Bytes(), 0644); err != nil {
 		fmt.Printf("write file err: %v", err)
 	}
 	return nil
 }
 
 func main() {
-	SetExifData("/Users/billdavis/Downloads/label.jpg")
+	SetExifData(imagePath)
 }
